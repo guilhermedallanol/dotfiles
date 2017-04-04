@@ -1,0 +1,7 @@
+pane	0	1	:vim	1	:*	1	:/Users/dllnl/Projects/quez/Rails/ehv3	1	vim	:vim
+pane	0	2	:rails	0	:-	1	:/Users/dllnl/Projects/quez/Rails/ehv3	1	ruby	:puma 3.6.2 (tcp://localhost:3000) [ehv3]  
+pane	0	2	:rails	0	:-	2	:/Users/dllnl/Projects/quez/Rails/ehv3	0	ruby	:/Users/dllnl/.rbenv/versions/2.3.3/bin/ruby bin/rails c
+pane	0	2	:rails	0	:-	3	:/Users/dllnl/Projects/quez/Rails/ehv3	0	redis-server	:redis-server *:6379
+window	0	1	1	:*	b0fd,181x60,0,0,0
+window	0	2	0	:-	7f16,181x60,0,0[181x30,0,0,1,181x29,0,31{90x29,0,31,3,90x29,91,31,4}]
+state	0	

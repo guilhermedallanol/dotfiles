@@ -1,0 +1,62 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export TERM="screen-256color"
+
+export ZSH=/Users/dllnl/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="amuse"
+
+plugins=(zsh-completions zsh-syntax-highlighting)
+
+autoload -U compinit && compinit
+
+# load custom executable functions
+for function in /Users/dllnl/.oh-my-zsh/custom/functions/*; do
+  source $function
+done
+
+source $ZSH/oh-my-zsh.sh
+
+export VISUAL='vim'
+export BUNDLER_EDITOR='vim'
+export EDITOR="vim"
+
+# aliases
+alias reloadzsh="source ~/.zshrc"
+alias quez="cd ~/Projects/quez"
+alias evimrc="vim ~/.vimrc"
+alias ezshrc="vim ~/.zshrc"
+alias etmux="vim ~/.tmux.conf"
+alias eslate="vim ~/.slate"
+
+# vim: ft=sh
+
+_is_tmux_not_running() {
+  [[ -z "$TMUX" ]]
+}
+
+_is_tmux_session_list_empty() {
+  [[ -z $(tmux ls) ]]
+}
+
+_ensure_tmux_is_running() {
+  if _is_tmux_session_list_empty; then
+    tmux new -d
+  fi
+}
+
+attach_to_tmux() {
+  if _is_tmux_not_running; then
+    _ensure_tmux_is_running
+    tmux att
+  fi
+}
+
+# init term with tmux
+attach_to_tmux
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

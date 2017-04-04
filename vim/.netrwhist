@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/dllnl/.vim'
+let g:netrw_dirhist_2='/Users/dllnl/.vim/rcplugins'
+let g:netrw_dirhist_3='/Users/dllnl/.vim/snippets'
+let g:netrw_dirhist_4='/Users/dllnl/Projects/quez/Rails/ehv3/app/views/admin/reports/purchase'

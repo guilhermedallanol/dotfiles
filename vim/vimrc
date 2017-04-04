@@ -1,0 +1,35 @@
+let mapleader="\<Space>"
+filetype plugin indent on
+autocmd!
+set nocompatible
+
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.vim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
+
+call s:SourceConfigFilesIn('rcconfigs')
+call s:SourceConfigFilesIn('functions')
+
+" Directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Plugins
+call s:SourceConfigFilesIn('rcplugins')
+
+" Plug 'garbas/vim-snipmate'
+" Plug 'marcweber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'tpope/vim-ragtag'
+" Plug 'honza/vim-snippets'
+" Plug 'Townk/vim-autoclose'
+" Plug 'vim-scripts/closetag.vim'
+" Plug 'stefanoverna/vim-i18n'
+
+
+" Initialize plugin system
+call plug#end()
