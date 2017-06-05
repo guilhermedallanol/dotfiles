@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/dllnl/.vim'
-let g:netrw_dirhist_2='/Users/dllnl/.vim/rcplugins'
-let g:netrw_dirhist_3='/Users/dllnl/.vim/snippets'
-let g:netrw_dirhist_4='/Users/dllnl/Projects/quez/Rails/ehv3/app/views/admin/reports/purchase'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/dllnl/Projects/quez/Rails/ehv3/app/services/sales/professionals'
+let g:netrw_dirhist_2='/Users/dllnl/Projects/quez/Rails/ehv3/db/migrate'
+let g:netrw_dirhist_3='/Users/dllnl/Projects/quez/Rails/ehv3/app/models'
+let g:netrw_dirhist_4='/Users/dllnl/Projects/quez/Rails/ehv3/spec/features/admin/sales/pair'
+let g:netrw_dirhist_5='/Users/dllnl/Projects/quez/Rails/ehv3/app/policies'
+let g:netrw_dirhist_6='/Users/dllnl/Projects/quez/Rails/ehv3/app/controllers/sales'
+let g:netrw_dirhist_7='/Users/dllnl/Projects/quez/Rails/ehv3/app/policies'

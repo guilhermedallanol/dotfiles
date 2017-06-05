@@ -21,15 +21,5 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 call s:SourceConfigFilesIn('rcplugins')
 
-" Plug 'garbas/vim-snipmate'
-" Plug 'marcweber/vim-addon-mw-utils'
-" Plug 'tomtom/tlib_vim'
-" Plug 'tpope/vim-ragtag'
-" Plug 'honza/vim-snippets'
-" Plug 'Townk/vim-autoclose'
-" Plug 'vim-scripts/closetag.vim'
-" Plug 'stefanoverna/vim-i18n'
-
-
 " Initialize plugin system
 call plug#end()
