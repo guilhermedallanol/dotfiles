@@ -11,3 +11,6 @@ tags
 tmp/**/*
 !tmp/cache/.keep
 *.pyc
+.ruby-version
+*.sql
+*.rdb

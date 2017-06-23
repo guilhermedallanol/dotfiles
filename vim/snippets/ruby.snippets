@@ -28,6 +28,15 @@ snippet beg
 	end
 snippet req require
 	require '${1}'
+snippet reqrr
+	require 'rails_helper'
+	${0}
+snippet reqs
+	require 'spec_helper'
+	${0}
+snippet reqf
+	require '`expand('#:r')`'
+	${0}
 snippet reqr
 	require_relative '${1}'
 snippet #
@@ -44,6 +53,17 @@ snippet def
 	def ${1:method_name}
 		${0}
 	end
+snippet dc
+	described_class.new(${1:args})${0}
+snippet dcp
+	described_class.new(${1:args}).perform${0}
+snippet btc
+	let(:${1:base}) { double(:$1) }
+	
+	before do
+		stub_const("${2:class}", $1)
+		expect($1).to receive(:transaction).and_yield
+	end${0}
 snippet deft
 	def test_${1:case_name}
 		${0}
@@ -421,7 +441,7 @@ snippet dov
 		${2}
 	end
 snippet :
-	${1:key}: ${2:'value'}
+	, ${1:key}: ${2:'value'}
 snippet ope
 	open('${1:path/or/url/or/pipe}', '${2:w}') { |${3:io}| ${0} }
 # path_from_here()
@@ -633,6 +653,10 @@ snippet mi
 	must_include ${0:what}
 snippet wi
 	wont_include ${0:what}
+snippet wt
+	.with(${1:args})${0}
+snippet ar
+	.and_return(${1:value})${0}
 snippet mm
 	must_match /${0:regex}/
 snippet wm
@@ -674,6 +698,8 @@ snippet aft
 	end
 snippet let
 	let(:${1:object}) { ${0} }
+snippet led
+	let(:${1:object}) { double(:$1${0}) }
 snippet let!
 	let!(:${1:object}) { ${0} }
 snippet subj
@@ -684,6 +710,8 @@ snippet spec
 	specify { subject.${0} }
 snippet exp
 	expect(${1:object}).to ${0}
+snippet expr
+	expect(${1:object}).to receive(:${2:message})${0}
 snippet expb
 	expect { ${1:object} }.to ${0}
 snippet experr

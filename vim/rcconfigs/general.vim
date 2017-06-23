@@ -35,3 +35,11 @@ set numberwidth=2
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
+" 80 column guideline
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkred guibg=#FFD9D9
+  autocmd BufEnter * match OverLength /\%>80v.\+/
+augroup END
+" autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
+" autocmd BufEnter * match OverLength /\%75v.*/
