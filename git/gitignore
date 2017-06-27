@@ -14,3 +14,4 @@ tmp/**/*
 .ruby-version
 *.sql
 *.rdb
+.dotfiles/vim/.netrwhist

@@ -15,3 +15,7 @@ ln -s ~/.dotfiles/git/gitignore ~/.gitignore
 ln -s ~/.dotfiles/rspec/rspec ~/.rspec
 ln -s ~/.dotfiles/slate/slate ~/.slate
 
+mkdir ~/.oh-my-zsh/custom/functions
+ln -s ~/.dotfiles/oh-my-zsh/functions/g ~/.oh-my-zsh/custom/functions/g
+ln -s ~/.dotfiles/oh-my-zsh/functions/t ~/.oh-my-zsh/custom/functions/t
+ln -s ~/.dotfiles/oh-my-zsh/plugins/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions

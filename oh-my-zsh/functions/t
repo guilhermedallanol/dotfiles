@@ -1,0 +1,9 @@
+# No arguments: `git status`
+# With arguments: acts like `git`
+t() {
+  if [[ $# -gt 0 ]]; then
+    tig "$@"
+  else
+    tig status
+  fi
+}
