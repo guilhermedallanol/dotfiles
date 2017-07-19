@@ -238,6 +238,8 @@ snippet hash
 	Hash.new { |${1:hash}, ${2:key}| $1[$2] = ${0} }
 snippet file File.foreach() { |line| .. }
 	File.foreach(${1:'path/to/file'}) { |${2:line}| ${0} }
+snippet filew
+	File.write("${1:path/to/file}", ${2:content})${0}
 snippet file File.read()
 	File.read(${1:'path/to/file'})
 snippet Dir Dir.global() { |file| .. }

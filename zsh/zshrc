@@ -33,6 +33,7 @@ alias evimrc="vim ~/.vimrc"
 alias ezshrc="vim ~/.zshrc"
 alias etmux="vim ~/.tmux.conf"
 alias eslate="vim ~/.slate"
+alias be="bundle exec "
 
 # vim: ft=sh
 
