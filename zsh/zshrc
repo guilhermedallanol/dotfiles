@@ -29,6 +29,7 @@ export EDITOR="vim"
 alias reloadzsh="source ~/.zshrc"
 alias quez="cd ~/Projects/quez"
 alias work="cd ~/Projects/work"
+alias mine="cd ~/Projects/mine"
 alias evimrc="vim ~/.vimrc"
 alias ezshrc="vim ~/.zshrc"
 alias etmux="vim ~/.tmux.conf"
@@ -60,6 +61,7 @@ attach_to_tmux() {
 
 # init term with tmux
 attach_to_tmux
+eval "$(direnv hook zsh)"
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+eval "$(rbenv init - --no-rehash)"
