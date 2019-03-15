@@ -240,6 +240,10 @@ snippet file File.foreach() { |line| .. }
 	File.foreach(${1:'path/to/file'}) { |${2:line}| ${0} }
 snippet filew
 	File.write("${1:path/to/file}", ${2:content})${0}
+snippet filej
+	File.write("${1:path/to/file}", ${2:content}.to_json)${0}
+snippet filex
+	File.write("${1:path/to/file}", ${2:subject.render})${0}
 snippet file File.read()
 	File.read(${1:'path/to/file'})
 snippet Dir Dir.global() { |file| .. }
@@ -610,6 +614,8 @@ snippet sop
 	save_and_open_page
 snippet pry
 	require 'pry'; binding.pry
+snippet pryr
+	require 'pry-remote'; binding.remote_pry
 snippet strf
 	strftime('${1:%Y-%m-%d %H:%M:%S %z}')${0}
 #
@@ -658,9 +664,9 @@ snippet mi
 snippet wi
 	wont_include ${0:what}
 snippet wt
-	.with(${1:args})${0}
+	with(${1:args})${0}
 snippet ar
-	.and_return(${1:value})${0}
+	and_return(${1:value})${0}
 snippet mm
 	must_match /${0:regex}/
 snippet wm

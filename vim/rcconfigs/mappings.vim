@@ -13,3 +13,9 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+
+" JSON Format
+com! JSONFormat %!python -c "import json, sys, collections; print json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=2)"
+
+" XML Format
+com! XMLFormat %! xmllint --format -
