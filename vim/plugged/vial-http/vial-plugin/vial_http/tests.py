@@ -1,0 +1,155 @@
+from __future__ import print_function
+from textwrap import dedent
+
+from .util import (parse_request_line, render_template, get_headers_and_templates,
+                   find_request, pretty_xml, StringIO, get_connection_settings,
+                   Headers)
+
+
+def hdr(**kwargs):
+    return Headers(list(kwargs.items()))
+
+
+def fill(param):
+    return '!{}'.format(param)
+
+
+def test_parse_request_line():
+    result = parse_request_line('GET /query')
+    assert result['method'] == 'GET'
+    assert result['url'] == '/query'
+
+    assert parse_request_line('GET /query?some_arg')['url'] == '/query?some_arg'
+
+    result = parse_request_line('GET /query q=value f:=value mp@=value H:value')
+    assert result['url'] == '/query'
+    assert result['query'] == [('q', 'value')]
+    assert result['form'] == [('f', 'value')]
+    assert result['files'] == [('mp', 'value')]
+    assert result['headers'] == {'H': 'value'}
+
+    result = parse_request_line('GET /query q=value < body')
+    assert result['query'] == [('q', 'value')]
+    assert result['body_from_file'] == 'body'
+
+    result = parse_request_line('GET /query q=__pwd__', pwd_func=fill)
+    assert result['query'] == [('q', '!q')]
+
+    result = parse_request_line('GET /query q=__input__', input_func=fill)
+    assert result['query'] == [('q', '!q')]
+
+    assert parse_request_line('GET /query | tpl1, tpl2')['templates'] == ['tpl1', 'tpl2']
+
+    result = parse_request_line('GET /query < /file | tpl1')
+    assert result['body_from_file'] == '/file'
+    assert result['templates'] == ['tpl1']
+
+
+def test_render_template():
+    assert render_template('${body}', body='foo') == 'foo'
+    assert render_template('Token: ${json["token"]}', json={"token": "foo"}) == "Token: foo"
+    assert render_template('Token: ${json["token"]}', json={}) == "Token: None"
+    assert render_template('Token: ${json[token]}', json={}) == "ERROR: name 'token' is not defined"
+
+
+def test_get_templates():
+    content = dedent('''\
+        TEMPLATE boo
+        foo: foo
+
+        TEMPLATE foo
+        bar
+        baz
+
+        TEMPLATE baz << HERE
+        baz
+
+        baz
+        HERE
+
+        boo: boo
+        foo
+    ''')
+    lines = content.splitlines()
+    h, t = get_headers_and_templates(lines, len(lines) - 1)
+    assert t == {'foo': 'bar\nbaz', 'boo': 'foo: foo', 'baz': 'baz\n\nbaz'}
+    assert h.headers == [('User-Agent', 'vial-http'), ('boo', 'boo')]
+
+
+def test_find_request():
+    content = dedent('''\
+        POST /uri1
+
+        POST /uri2
+
+        POST /uri3
+        boo
+
+        POST /uri4
+        boo
+        foo
+
+        POST /uri5 << HERE
+        boo
+        HERE
+    ''')
+
+    lines = content.splitlines()
+
+    assert find_request(lines, 0) == ('POST /uri1', None, 0)
+    assert find_request(lines, 1) == ('POST /uri1', None, 0)
+
+    assert find_request(lines, 2) == ('POST /uri2', None, 2)
+    assert find_request(lines, 3) == ('POST /uri2', None, 2)
+
+    assert find_request(lines, 4) == ('POST /uri3', 'boo', 5)
+    assert find_request(lines, 5) == ('POST /uri3', 'boo', 5)
+    assert find_request(lines, 6) == ('POST /uri3', 'boo', 5)
+
+    assert find_request(lines, 7) == ('POST /uri4', 'boo\nfoo', 9)
+    assert find_request(lines, 8) == ('POST /uri4', 'boo\nfoo', 9)
+    assert find_request(lines, 9) == ('POST /uri4', 'boo\nfoo', 9)
+    assert find_request(lines, 10) == ('POST /uri4', 'boo\nfoo', 9)
+
+    assert find_request(lines, 11) == ('POST /uri5', 'boo', 13)
+    assert find_request(lines, 12) == ('POST /uri5', 'boo', 13)
+    assert find_request(lines, 13) == ('POST /uri5', 'boo', 13)
+
+
+def test_pretty_xml():
+    buf = StringIO()
+
+    pretty_xml(b'''\
+        <root xmlns:d='http://boo' xmlns="http://boom">
+            <d:child d:foo="boo">some text&gt;<child2 xmlns:foo='http//foo'>text</child2>another text</d:child>
+            <d:child>boo</d:child>
+            <d:child>foo</d:child>
+            <d:child>zoo</d:child>
+            <d:child>hoo</d:child>
+        </root>''', buf)
+    print(buf.getvalue())
+
+
+def test_connection_settings():
+    result = get_connection_settings('http://boo.loc/', hdr())
+    assert result == (('boo.loc', None), ('http', 'boo.loc', '/', '', ''))
+
+    result = get_connection_settings('http://boo.loc:8000/', hdr())
+    assert result == (('boo.loc', 8000), ('http', 'boo.loc:8000', '/', '', ''))
+
+    result = get_connection_settings('http://boo.loc/', hdr(host='foo.loc'))
+    assert result == (('boo.loc', None), ('http', 'boo.loc', '/', '', ''))
+
+    result = get_connection_settings('/', hdr(host='foo.loc'))
+    assert result == (('foo.loc', None), ('http', 'foo.loc', '/', '', ''))
+
+    result = get_connection_settings('/', hdr(host='https://foo.loc:8443'))
+    assert result == (('foo.loc', 8443), ('https', 'foo.loc:8443', '/', '', ''))
+
+    result = get_connection_settings('/', hdr(host='https://foo.loc:8443',
+                                              **{'vial-connect': 'boo.loc'}))
+    assert result == (('boo.loc', None), ('http', 'foo.loc:8443', '/', '', ''))
+
+    result = get_connection_settings('/', hdr(host='https://foo.loc',
+                                              **{'vial-connect': 'https://boo.loc:8443'}))
+    assert result == (('boo.loc', 8443), ('https', 'foo.loc', '/', '', ''))

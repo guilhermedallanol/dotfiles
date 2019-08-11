@@ -180,6 +180,9 @@ snippet ana
 # ivc == instance variable cache
 snippet ivc
 	@${1:variable_name} ||= ${0:cached_value}
+# iv == instance variable
+snippet iv
+	@${1:attribute} = $1${0}
 # include Enumerable
 snippet Enum
 	include Enumerable
@@ -708,12 +711,18 @@ snippet aft
 	end
 snippet let
 	let(:${1:object}) { ${0} }
+snippet leb
+	let(:${1:object}) do
+		${0}
+	end
 snippet led
 	let(:${1:object}) { double(:$1${0}) }
 snippet let!
 	let!(:${1:object}) { ${0} }
 snippet subj
 	subject { ${0} }
+snippet subjdc
+	subject { described_class${1:.new} }
 snippet s.
 	subject.${0:method}
 snippet spec

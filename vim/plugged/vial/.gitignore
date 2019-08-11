@@ -1,0 +1,9 @@
+*.pyc
+*.swp
+/dist
+/*.egg-info
+
+__pycache__
+
+/.snaked_project
+/doc/tags

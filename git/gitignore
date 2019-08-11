@@ -12,6 +12,8 @@ tmp/**/*
 !tmp/cache/.keep
 *.pyc
 .ruby-version
-*.sql
 *.rdb
 .dotfiles/vim/.netrwhist
+.tool-versions
+logfile
+Procfile.dev

@@ -10,8 +10,6 @@ export ZSH=/Users/dllnl/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="amuse"
 
-plugins=(zsh-completions zsh-syntax-highlighting)
-
 autoload -U compinit && compinit
 
 # load custom executable functions
@@ -36,6 +34,16 @@ alias etmux="vim ~/.tmux.conf"
 alias eslate="vim ~/.slate"
 alias be="bundle exec "
 alias python="python3"
+alias bspecs="CI=true COVERAGE=true parallel_rspec spec -n 4 && notify"
+alias bprep="RAILS_ENV=test rake 'parallel:setup[4]' && notify"
+alias pg11="pg_ctl -D /Users/dllnl/.asdf/installs/postgres/11.4/data -l logfile"
+alias pg9="pg_ctl -D /Users/dllnl/.asdf/installs/postgres/9.5.15/data -l logfile"
+
+notify() {
+  say "Done!"
+  osascript -e 'display alert "Done!"'
+}
+
 
 # vim: ft=sh
 
@@ -60,8 +68,18 @@ attach_to_tmux() {
   fi
 }
 
+plugins=(zsh-completions zsh-syntax-highlighting)
+
 # init term with tmux
 attach_to_tmux
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 eval "$(rbenv init - --no-rehash)"
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
