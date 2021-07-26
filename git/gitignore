@@ -17,3 +17,5 @@ tmp/**/*
 .tool-versions
 logfile
 Procfile.dev
+*.local
+.vim-tslint

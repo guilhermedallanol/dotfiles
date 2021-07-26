@@ -1,0 +1,16 @@
+pane	0	1	:zsh	0	:	1	:/Users/dllnl/RunaHR/frontend	0	zsh	:
+pane	0	1	:zsh	0	:	2	:/Users/dllnl/RunaHR/events	1	zsh	:
+pane	0	2	:zsh	0	:-	1	:/Users/dllnl/RunaHR/rails-api	1	zsh	:
+pane	0	3	:vim	1	:*	1	:/Users/dllnl/RunaHR/rails-api	1	vim	:vim
+pane	2	1	:vim	0	:-	1	:/Users/dllnl/Personal/Nubank/authorizer	1	vim	:vim ./spec/integrations/transactions/authorizations_spec.rb
+pane	2	2	:vim	0	:	1	:/Users/dllnl/Personal/Projects/work/standby/emites/emites-ruby	1	vim	:vim
+pane	2	3	:zsh	1	:*	1	:/Users/dllnl/Personal/Nubank/authorizer	1	zsh	:/bin/zsh
+pane	3	1	:zsh	1	:*	1	:/Users/dllnl	1	zsh	:
+window	0	1	0	:	7213,425x88,0,0[425x44,0,0,98,425x43,0,45,180]
+window	0	2	0	:-	75c8,425x88,0,0,237
+window	0	3	1	:*	f5c7,425x88,0,0,227
+window	2	1	0	:-	75c9,425x88,0,0,276
+window	2	2	0	:	f5c6,425x88,0,0,283
+window	2	3	1	:*	35c9,425x88,0,0,518
+window	3	1	1	:*	35c1,425x88,0,0,510
+state	2	0

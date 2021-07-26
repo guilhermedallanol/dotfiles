@@ -33,9 +33,11 @@ alias ezshrc="vim ~/.zshrc"
 alias etmux="vim ~/.tmux.conf"
 alias eslate="vim ~/.slate"
 alias be="bundle exec "
+alias dcc="docker-compose "
 alias python="python3"
 alias bspecs="CI=true COVERAGE=true parallel_rspec spec -n 4 && notify"
 alias bprep="RAILS_ENV=test rake 'parallel:setup[4]' && notify"
+alias rsp="bin/rspec"
 alias pg11="pg_ctl -D /Users/dllnl/.asdf/installs/postgres/11.4/data -l logfile"
 alias pg9="pg_ctl -D /Users/dllnl/.asdf/installs/postgres/9.5.15/data -l logfile"
 
@@ -72,14 +74,48 @@ plugins=(zsh-completions zsh-syntax-highlighting)
 
 # init term with tmux
 attach_to_tmux
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+export PATH=$PATH:~/.vim/plugged/vim-iced/bin
 eval "$(rbenv init - --no-rehash)"
 
-. $HOME/.asdf/asdf.sh
 
-. $HOME/.asdf/completions/asdf.bash
-
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
+export YVM_DIR=/Users/dllnl/.yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bitcomplete bit

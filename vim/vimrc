@@ -1,4 +1,5 @@
 let mapleader="\<Space>"
+let maplocalleader="\\"
 filetype plugin indent on
 autocmd!
 set nocompatible

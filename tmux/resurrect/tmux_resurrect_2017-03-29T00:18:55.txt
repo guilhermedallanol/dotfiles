@@ -1,7 +1,0 @@
-pane	2	1	:~	1	:*	1	:/Users/dllnl	1	zsh	:
-pane	work	1	:[tmux]	0	:-	1	:/Users/dllnl	1	zsh	:
-pane	work	2	:~	1	:*	1	:/Users/dllnl	1	zsh	:
-window	2	1	1	:*	b100,181x60,0,0,3
-window	work	1	0	:-	b0fd,181x60,0,0,0
-window	work	2	1	:*	b0fe,181x60,0,0,1
-state	2	

@@ -1,6 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/dllnl/Projects/work/estoka/app/controllers'
-let g:netrw_dirhist_2='/Users/dllnl/Projects/mine/Volition/nichenexus/app/views/application/wizard'
-let g:netrw_dirhist_3='/Users/dllnl/Projects/mine/Volition/nichenexus/app/controllers/vendors/listings'
-let g:netrw_dirhist_4='/Users/dllnl/Projects/mine/Volition/nichenexus/spec'
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/dllnl/RunaHR/rails-api/app/serializers/v2/events'
+let g:netrw_dirhist_7='/Users/dllnl/Personal/Nubank/authorizer/config'
+let g:netrw_dirhist_6='/Users/dllnl/Personal/Nubank/authorizer/lib/matchers'
+let g:netrw_dirhist_5='/Users/dllnl/Personal/Nubank/authorizer/config'
+let g:netrw_dirhist_4='/Users/dllnl/Personal/Nubank/authorizer/spec'
+let g:netrw_dirhist_3='/Users/dllnl/Personal/Nubank/authorizer/spec/integrations'
+let g:netrw_dirhist_2='/Users/dllnl/Personal/Nubank/authorizer/spec/integrations/transactions'
+let g:netrw_dirhist_1='/Users/dllnl/Personal/Nubank/authorizer/spec/integrations'
+let g:netrw_dirhist_0='/Users/dllnl/Personal/Nubank/authorizer/spec'
+let g:netrw_dirhist_9='/Users/dllnl/Personal/Nubank/authorizer'

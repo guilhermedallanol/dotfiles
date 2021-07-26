@@ -33,3 +33,5 @@
   user = guilhermedallanol
 [branch]
   autosetupmerge = always
+[pull]
+	rebase = false

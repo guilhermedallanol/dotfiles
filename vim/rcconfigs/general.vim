@@ -37,7 +37,7 @@ set splitbelow
 set splitright
 
 " 80 column guideline
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 guifg=white
-  autocmd BufEnter * match OverLength /\%>80v.\+/
-augroup END
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 guifg=white
+"   autocmd BufEnter * match OverLength /\%>118v.\+/
+" augroup END

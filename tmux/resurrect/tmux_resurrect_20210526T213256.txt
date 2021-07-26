@@ -1,0 +1,8 @@
+pane	0	1	:ruby	1	:*	1	:/Users/dllnl/RunaHR/rails-api	1	ruby	:puma 4.3.7 (tcp://localhost:3000) [rails-api]  
+pane	0	1	:ruby	1	:*	2	:/Users/dllnl/RunaHR/rails-api	0	ruby	:/Users/dllnl/.rbenv/versions/2.6.6/bin/ruby bin/rails c
+pane	0	2	:vim	0	:-	1	:/Users/dllnl/RunaHR/rails-api	1	vim	:vim app/controllers/v2/events/employees_controller.rb
+pane	0	3	:vim	0	:	1	:/Users/dllnl/RunaHR/rails-api	1	vim	:vim
+window	0	1	1	:*	1a8a,318x66,0,0[318x33,0,0,59,318x32,0,34,90]
+window	0	2	0	:-	cb00,318x66,0,0,3
+window	0	3	0	:	e5ba,318x66,0,0,88
+state	0	

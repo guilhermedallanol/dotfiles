@@ -1,5 +1,0 @@
-pane	0	1	:vim	0	:-	1	:/Users/dllnl	1	vim	:vim /Users/dllnl/.tmux.conf
-pane	0	2	:bash	1	:*	1	:/Users/dllnl	1	bash	:
-window	0	1	0	:-	b87d,180x43,0,0,0
-window	0	2	1	:*	5c6f,180x43,0,0,10
-state	0	

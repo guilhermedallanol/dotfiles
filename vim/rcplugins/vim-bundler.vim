@@ -1,1 +1,1 @@
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
